@@ -3,9 +3,9 @@ package ua.goit.htmlmaker.element;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Body implements Element {
+public class Body extends AbstractElement<Body> implements Element {
 
-  private List<Element> elements = new ArrayList<Element>();
+  private List<Element> elements = new ArrayList<>();
 
   public Body addElement(Element el) {
     this.elements.add(el);
@@ -14,12 +14,15 @@ public class Body implements Element {
 
   @Override
   public String print() {
-    StringBuilder html = new StringBuilder().append("<body>");
+    StringBuilder html = new StringBuilder()
+        .append("<body")
+        .append(getCssClass())
+        .append(">");
 
     for (Element el : elements) {
       html.append(el.print());
     }
 
-    return html.append("</body>").toString() ;
+    return html.append("</body>").toString();
   }
 }

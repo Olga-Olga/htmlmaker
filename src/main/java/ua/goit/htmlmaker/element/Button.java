@@ -1,6 +1,6 @@
 package ua.goit.htmlmaker.element;
 
-public class Button implements Element {
+public class Button extends AbstractElement<Button> implements Element {
 
   private String name;
 
@@ -10,6 +10,12 @@ public class Button implements Element {
 
   @Override
   public String print() {
-    return String.format("<button>%s</button>", name);
+    return new StringBuilder()
+        .append("<button")
+        .append(getCssClass())
+        .append(">")
+        .append(name)
+        .append("</button>")
+        .toString();
   }
 }
